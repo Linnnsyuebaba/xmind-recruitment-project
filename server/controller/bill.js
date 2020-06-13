@@ -4,6 +4,7 @@ const cache = {
   bill: {
     list: [],
     total: 0,
+    monthlyIncome: 0
   },
 }
 
@@ -17,9 +18,14 @@ const handlePageConfig = (pageNum, pageSzie) => {
 }
 
 const getContent = async ({ filename, category, range }) => {
-  const res = await _getFileContent({ filename, category, range })
+  const { res, monthlyIncome } = await _getFileContent({
+    filename,
+    category,
+    range,
+  })
   cache[filename].list = res
   cache[filename].total = res.length
+  cache[filename].monthlyIncome = monthlyIncome
 }
 
 const getBill = async (ctx) => {
@@ -34,6 +40,7 @@ const getBill = async (ctx) => {
     result: {
       list: res,
       total: bill.total,
+      monthlyIncome: bill.monthlyIncome
     },
   }
 }
@@ -45,7 +52,7 @@ const addBill = async (ctx) => {
   ctx.start = 200
   ctx.body = {
     success: res,
-    msg: res ? '添加成功' : '添加失败'
+    msg: res ? '添加成功' : '添加失败',
   }
 }
 

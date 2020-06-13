@@ -6,6 +6,7 @@ const State = {
   bill: {
     list: [],
     total: 0,
+    monthlyIncome: 0
   },
   queryConfig: {
     pageNum: 1,

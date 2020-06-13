@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-btn
-          href="https://github.com/vuetifyjs/vuetify/releases/latest"
+          href="https://github.com/Linnnsyuebaba/xmind-recruitment-project"
           target="_blank"
           text
         >
@@ -25,8 +25,7 @@ export default {
   name: 'App',
   components: {
     TableContent,
-  },
-  data: () => ({}),
+  }
 }
 </script>
 <style lang="stylus">

@@ -12,6 +12,7 @@ const handleFilePath = (filename) =>
 const _getFileContent = async ({ filename, category = '', range = [] }) => {
   const filePath = handleFilePath(filename)
   let res = []
+  let monthlyIncome = 0
   let data = await fse.readFile(filePath, fileType)
   let dataArr = data.split(/\r?\n/).map((item) => item.split(','))
   let attrs = dataArr.shift()
@@ -30,6 +31,9 @@ const _getFileContent = async ({ filename, category = '', range = [] }) => {
       res = res.filter(
         (item) => item.time >= monthFirstDay && item.time <= monthLastDay
       )
+      res.forEach((item) => {
+        monthlyIncome += item.amount * (item.type ? 1 : -1)
+      })
     }
   } else {
     res = dataArr.map(([id, type, name]) => ({
@@ -38,7 +42,7 @@ const _getFileContent = async ({ filename, category = '', range = [] }) => {
       type: Number(type),
     }))
   }
-  return res
+  return { res, monthlyIncome }
 }
 
 const _addTofile = async (filename, data) => {
@@ -46,7 +50,7 @@ const _addTofile = async (filename, data) => {
   try {
     fse.appendFileSync(filePath, data)
     return true
-  } catch(err) {
+  } catch (err) {
     console.log(err)
     return false
   }

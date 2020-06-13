@@ -18,6 +18,7 @@ const Actions = {
         commit('setBillData', {
           list: result.list,
           total: result.total,
+          monthlyIncome: result.monthlyIncome,
         })
         commit('setLoadingStatus', false)
       }
@@ -25,9 +26,12 @@ const Actions = {
   },
   // eslint-disable-next-line no-unused-vars
   async addBill({ state }, data) {
-    return await axios.post(url.bill.addBill, { ...data, date: +new Date(data.date) })
+    return await axios.post(url.bill.addBill, {
+      ...data,
+      date: +new Date(data.date),
+    })
   },
-  
+
   async getCategories({ commit }) {
     await axios.get(url.categories.getCategories).then(({ data }) => {
       const { success, categories: list } = data

@@ -1,7 +1,8 @@
 const Mutations = {
-  setBillData(state, { total, list }) {
+  setBillData(state, { total, list, monthlyIncome }) {
     state.bill.list = list
     state.bill.total = total
+    state.bill.monthlyIncome = monthlyIncome
   },
   setPageNum(state, num) {
     state.queryConfig.pageNum = num

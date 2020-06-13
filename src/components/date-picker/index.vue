@@ -35,15 +35,16 @@
         <div class="count">
           <v-chip
             class="ma-2"
-            :color="calculateAmount > 0 ? 'green' : 'red'"
+            :color="bill.monthlyIncome > 0 ? 'green' : 'red'"
             text-color="white"
           >
             <v-icon left>mdi-blinds</v-icon>
-            当月
-            <span class="category">{{
-              formatCategory(queryConfig.category)
-            }}</span>
-            收支金额：{{ calculateAmount.toLocaleString('en-US') }}
+            <span class="bold">{{
+              `${date.split('-')[0]}年${Number(date.split('-')[1])}月`
+            }}</span
+            >的
+            <span class="bold">{{ formatCategory(queryConfig.category) }}</span>
+            收支总金额：{{ bill.monthlyIncome.toLocaleString('en-US') }}
             元
           </v-chip>
         </div>
@@ -67,13 +68,6 @@ export default {
   }),
   computed: {
     ...mapState(['bill', 'queryConfig', 'categories']),
-    calculateAmount() {
-      let amount = 0
-      this.bill.list.forEach(
-        (item) => (amount += item.amount * (item.type ? 1 : -1))
-      )
-      return amount
-    },
   },
   methods: {
     ...mapMutations(['setMonthRange']),
@@ -108,6 +102,6 @@ export default {
   .display
     display flex
     align-items center
-    .category
+    .bold
      font-weight 700
 </style>

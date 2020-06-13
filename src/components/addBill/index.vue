@@ -73,7 +73,7 @@
                 </v-col>
               </v-row>
             </v-container>
-            <small>*indicates required field</small>
+            <small>*表示该项必填</small>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -136,7 +136,6 @@ export default {
         const {
           data: { success, msg },
         } = await this.addBill(this.form)
-        console.log(success, msg)
         this.addStatus.success = success
         this.addStatus.msg = msg
         this.snackbar = true
