@@ -8,7 +8,7 @@ const app = new Koa()
 const router = new Router()
 app.use(koaBody())
 
-const PORT = 4000
+const PORT = 2222
 
 const getBill = new Router()
 getBill.post('/getBill', billController.getBill)
@@ -19,9 +19,9 @@ addBill.post('/addBill', billController.addBill)
 const getCategories = new Router()
 getCategories.get('/getCategories', categoryController.getCategories)
 
-router.use('/api', getBill.routes(), getBill.allowedMethods())
-router.use('/api', addBill.routes(), addBill.allowedMethods())
-router.use('/api', getCategories.routes(), getCategories.allowedMethods())
+router.use('/xmind', getBill.routes(), getBill.allowedMethods())
+router.use('/xmind', addBill.routes(), addBill.allowedMethods())
+router.use('/xmind', getCategories.routes(), getCategories.allowedMethods())
 
 app.use(router.routes(), router.allowedMethods())
 

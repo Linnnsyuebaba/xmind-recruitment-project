@@ -1,4 +1,4 @@
 const BASE_URL = {
-  api: '/api'
+  api: '/xmind'
 }
 export default BASE_URL
