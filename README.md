@@ -1,24 +1,22 @@
-# xmind-project
+# xmind-recruitment-project
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 运行服务端（无数据库，文件读写模拟数据库操作）
+```
+yarn server
+```
+
+### 本地运行项目
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 项目打包
 ```
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
