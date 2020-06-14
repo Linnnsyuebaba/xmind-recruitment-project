@@ -22,7 +22,7 @@ const _getFileContent = async ({ filename, category = '', range = [] }) => {
       .map(([type, time, category, amount]) => ({
         type: Number(type),
         time: Number(time),
-        amount: Number(amount),
+        amount: Number(amount).toFixed(2),
         category,
       }))
       .filter((item) => (category ? item.category === category : item))
